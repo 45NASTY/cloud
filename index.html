@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISMT College - Cyber Security and Digital Forensics</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        .brand-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4A90E2;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #4A90E2;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .apply-btn {
+            background: #FF6B47;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: #ff5532;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #6B46C1 0%, #4A90E2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            top: 10%;
+            left: 10%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            bottom: 20%;
+            right: 15%;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            color: white;
+        }
+
+        .hero-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            margin-bottom: 2rem;
+        }
+
+        .bba-badge {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            display: inline-block;
+            color: #333;
+        }
+
+        .bba-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4A90E2;
+            display: block;
+        }
+
+        .bba-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .cta-button {
+            background: #FF6B47;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #ff5532;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .illustration {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        .person-illustration {
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><circle cx="200" cy="150" r="60" fill="%23FFB880"/><rect x="150" y="200" width="100" height="120" rx="20" fill="%23FF6B47"/><rect x="170" y="320" width="20" height="40" fill="%23FFB880"/><rect x="210" y="320" width="20" height="40" fill="%23FFB880"/><rect x="120" y="220" width="30" height="80" rx="15" fill="%23FFB880"/><rect x="250" y="220" width="30" height="80" rx="15" fill="%23FFB880"/></svg>') center/contain no-repeat;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Programmes Section */
+        .programmes {
+            background: #f8f9fa;
+        }
+
+        .programme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .programme-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .programme-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #FF6B47;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .card-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .about-stats {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .stat-item h3 {
+            color: #4A90E2;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: #666;
+        }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .info-card {
+            background: #4A90E2;
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 250px;
+        }
+
+        .info-card h4 {
+            margin-bottom: 1rem;
+        }
+
+        /* Campus Section */
+        .campus {
+            background: #f8f9fa;
+        }
+
+        .campus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .campus-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .campus-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .campus-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .campus-card h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .campus-btn {
+            background: #4A90E2;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .campus-btn:hover {
+            background: #357abd;
+        }
+
+        /* Credit Transfer Section */
+        .credit-transfer {
+            background: white;
+        }
+
+        .transfer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .transfer-item {
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            transition: border-color 0.3s;
+        }
+
+        .transfer-item:hover {
+            border-color: #4A90E2;
+        }
+
+        .transfer-item h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .transfer-item p {
+            color: #666;
+        }
+
+        /* Success Section */
+        .success {
+            background: #f8f9fa;
+        }
+
+        .success-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .success-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .success-content > p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .testimonial cite {
+            color: #4A90E2;
+            font-weight: 600;
+        }
+
+        .success-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .graduate-photo img {
+            max-width: 100%;
+            border-radius: 15px;
+        }
+
+        /* Industry Partners Section */
+        .industry-partners {
+            background: white;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        .partner-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            height: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .partner-logo:hover img {
+            opacity: 1;
+        }
+
+        /* Events Section */
+        .events {
+            background: #f8f9fa;
+        }
+
+        .events-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .event-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .event-date {
+            background: #4A90E2;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .event-date .day {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .event-date .month {
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .event-content h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .event-content p {
+            color: #666;
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #4A90E2 100%);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-main {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .footer-logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+        }
+
+        .footer-text h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-text p {
+            line-height: 1.6;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1rem;
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Animation Styles */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: rippleEffect 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        button {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.1s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .about-grid,
+            .success-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .illustration {
+                width: 300px;
+                height: 300px;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .programme-grid,
+            .campus-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iOCIgZmlsbD0iIzRBOTBFMiIvPgo8dGV4dCB4PSIyMCIgeT0iMjUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5JUzwvdGV4dD4KPC9zdmc+" alt="ISMT Logo" class="logo">
+                <span class="brand-text">ISMT</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#programmes">Programmes</a></li>
+                <li><a href="#admissions">Admissions</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#placements">Placements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="search-btn">🔍</button>
+                <button class="apply-btn">Apply Now</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">BSc (Hons)</span>
+                <h1 class="hero-title">Cyber Security and Digital Forensics</h1>
+                <div class="hero-subtitle">
+                    <div class="bba-badge">
+                        <span class="bba-text">BBA</span>
+                        <span class="bba-desc">Business Information and Technology</span>
+                    </div>
+                </div>
+                <button class="cta-button">Apply Now for Admissions</button>
+            </div>
+            <div class="hero-image">
+                <div class="illustration">
+                    <div class="person-illustration"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programmes Section -->
+    <section class="programmes" id="programmes">
+        <div class="container">
+            <h2 class="section-title">Programmes We're Offering</h2>
+            <p class="section-subtitle">All levels of education and training opportunities</p>
+
+            <div class="programme-grid">
+                <div class="programme-card">
+                    <div class="card-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSJsaW5lYXItZ3JhZGllbnQoMTM1ZGVnLCAjNkI0NkMxIDAlLCAjNEE5MEUyIDEwMCUpIi8+CjxyZWN0IHg9IjUwIiB5PSI2MCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxMjAiIHJ4PSIxMCIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC4xIi8+CjxyZWN0IHg9IjcwIiB5PSI4MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC4zIi8+CjxyZWN0IHg9IjcwIiB5PSIxMDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMyIvPgo8cmVjdCB4PSI3MCIgeT0iMTIwIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjMiLz4KPC9zdmc+" alt="Computing">
+                        <div class="card-badge">💻</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>BSc (Hons) Computing Science</h3>
+                        <p>Comprehensive computing education with modern technologies</p>
+                    </div>
+                </div>
+
+                <div class="programme-card">
+                    <div class="card-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSJsaW5lYXItZ3JhZGllbnQoMTM1ZGVnLCAjRkY2QjQ3IDAlLCAjRkY1NTMyIDEwMCUpIi8+CjxyZWN0IHg9IjUwIiB5PSI2MCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxMjAiIHJ4PSIxMCIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC4xIi8+CjxjaXJjbGUgY3g9IjE1MCIgY3k9IjEwMCIgcj0iMzAiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMyIvPgo8cmVjdCB4PSIxMDAiIHk9IjE0MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMCIgcng9IjUiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMyIvPgo8L3N2Zz4=" alt="Business">
+                        <div class="card-badge">📊</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>BA (Hons) Business and Management</h3>
+                        <p>Strategic business education for future leaders</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>About The College</h2>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <h3>Accreditation</h3>
+                            <p>Fully accredited institution</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>Quality Assurance</h3>
+                            <p>Highest standards maintained</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>Why ISMT ?</h3>
+                            <p>Excellence in education</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>Why British Degree from ISMT ?</h3>
+                            <p>International recognition</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="info-card">
+                        <h4>More facts to share with</h4>
+                        <p>Exceptional educational experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Section -->
+    <section class="campus" id="facilities">
+        <div class="container">
+            <h2 class="section-title">Explore ISMT Campuses</h2>
+            <div class="campus-grid">
+                <div class="campus-card">
+                    <div class="campus-icon">🏛️</div>
+                    <h3>ISMT College Thamel</h3>
+                    <button class="campus-btn">View Campus</button>
+                </div>
+                <div class="campus-card">
+                    <div class="campus-icon">🏛️</div>
+                    <h3>ISMT College Dillibazar</h3>
+                    <button class="campus-btn">View Campus</button>
+                </div>
+                <div class="campus-card">
+                    <div class="campus-icon">🏛️</div>
+                    <h3>ISMT College Butwal</h3>
+                    <button class="campus-btn">View Campus</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credit Transfer Section -->
+    <section class="credit-transfer" id="admissions">
+        <div class="container">
+            <h2 class="section-title">Credit Transfer</h2>
+            <div class="transfer-grid">
+                <div class="transfer-item">
+                    <h3>University of Hertfordshire, UK</h3>
+                    <p>Direct credit transfer available</p>
+                </div>
+                <div class="transfer-item">
+                    <h3>University of West London (UWL)</h3>
+                    <p>Seamless transition opportunities</p>
+                </div>
+                <div class="transfer-item">
+                    <h3>University College Birmingham</h3>
+                    <p>Partnership for student mobility</p>
+                </div>
+                <div class="transfer-item">
+                    <h3>University of Gloucestershire</h3>
+                    <p>Academic pathway programs</p>
+                </div>
+                <div class="transfer-item">
+                    <h3>University of West England</h3>
+                    <p>International exchange programs</p>
+                </div>
+                <div class="transfer-item">
+                    <h3>University of Gloucestershire, UK</h3>
+                    <p>Quality education partnerships</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="success" id="placements">
+        <div class="container">
+            <div class="success-grid">
+                <div class="success-content">
+                    <h2>Success Speaks</h2>
+                    <p>Our graduates share their journey</p>
+                    <div class="testimonial">
+                        <p>"The education at ISMT has transformed my career prospects and opened doors to international opportunities."</p>
+                        <cite>- Alumni, Class of 2023</cite>
+                    </div>
+                </div>
+                <div class="success-image">
+                    <div class="graduate-photo">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDMwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iNDAwIiByeD0iMTUiIGZpbGw9IiM0QTkwRTIiLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTIwIiByPSI0MCIgZmlsbD0iI0ZGQjg4MCIvPgo8cmVjdCB4PSIxMDAiIHk9IjE4MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSIyMCIgZmlsbD0iI0ZGNkI0NyIvPgo8cmVjdCB4PSIxMjAiIHk9IjI4MCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjYwIiBmaWxsPSIjRkZCODgwIi8+CjxyZWN0IHg9IjE2MCIgeT0iMjgwIiB3aWR0aD0iMjAiIGhlaWdodD0iNjAiIGZpbGw9IiNGRkI4ODAiLz4KPHJlY3QgeD0iNzAiIHk9IjIwMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjgwIiByeD0iMTUiIGZpbGw9IiNGRkI4ODAiLz4KPHJlY3QgeD0iMjAwIiB5PSIyMDAiIHdpZHRoPSIzMCIgaGVpZ2h0PSI4MCIgcng9IjE1IiBmaWxsPSIjRkZCODgwIi8+Cjx0ZXh0IHg9IjE1MCIgeT0iMzgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5HcmFkdWF0ZTwvdGV4dD4KPC9zdmc+" alt="Graduate">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Partners Section -->
+    <section class="industry-partners">
+        <div class="container">
+            <h2 class="section-title">Bridging Talent & Industry</h2>
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMTIwIDYwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiByeD0iMTAiIGZpbGw9IiM0QTkwRTIiLz4KPHRleHQgeD0iNjAiIHk9IjM1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UGFydG5lcjE8L3RleHQ+Cjwvc3ZnPg==" alt="Industry Partner">
+                </div>
+                <div class="partner-logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMTIwIDYwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiByeD0iMTAiIGZpbGw9IiNFNzRDM0MiLz4KPHRleHQgeD0iNjAiIHk9IjM1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UGFydG5lcjI8L3RleHQ+Cjwvc3ZnPg==" alt="Industry Partner">
+                </div>
+                <div class="partner-logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMTIwIDYwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiByeD0iMTAiIGZpbGw9IiMyN0FFNTAiLz4KPHRleHQgeD0iNjAiIHk9IjM1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UGFydG5lcjM8L3RleHQ+Cjwvc3ZnPg==" alt="Industry Partner">
+                </div>
+                <div class="partner-logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMTIwIDYwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiByeD0iMTAiIGZpbGw9IiNGMzlDMTIiLz4KPHRleHQgeD0iNjAiIHk9IjM1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UGFydG5lcjQ8L3RleHQ+Cjwvc3ZnPg==" alt="Industry Partner">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events">
+        <div class="container">
+            <h2 class="section-title">Browse Latest Events</h2>
+            <div class="events-grid">
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="day">15</span>
+                        <span class="month">Dec</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Technology Summit 2024</h3>
+                        <p>Annual technology conference featuring industry leaders</p>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="day">22</span>
+                        <span class="month">Dec</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Career Fair</h3>
+                        <p>Connect with top employers and explore opportunities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Features And Infrastructures</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">📚</div>
+                    <h3>Quality Content</h3>
+                    <p>Comprehensive curriculum designed for industry needs</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">👥</div>
+                    <h3>Admissions</h3>
+                    <p>Streamlined admission process for all programs</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎓</div>
+                    <h3>World-ranking Info</h3>
+                    <p>Internationally recognized education standards</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🏢</div>
+                    <h3>Job Placement</h3>
+                    <p>Excellent placement record with top companies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-logo">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiByeD0iMTAiIGZpbGw9IiM0QTkwRTIiLz4KPHRleHQgeD0iMzAiIHk9IjM4IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SVM8L3RleHQ+Cjwvc3ZnPg==" alt="ISMT Logo">
+                        <div class="footer-text">
+                            <h3>About ISMT</h3>
+                            <p>ISMT College is a leading educational institution committed to providing quality education and fostering innovation in technology and business.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-grid">
+                    <div class="footer-section">
+                        <h4>Courses</h4>
+                        <ul>
+                            <li><a href="#">Computing Science</a></li>
+                            <li><a href="#">Business Management</a></li>
+                            <li><a href="#">Cyber Security</a></li>
+                            <li><a href="#">Digital Forensics</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#admissions">Admissions</a></li>
+                            <li><a href="#facilities">Facilities</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>More Links</h4>
+                        <ul>
+                            <li><a href="#">ISMT College Thamel</a></li>
+                            <li><a href="#">ISMT College Dillibazar</a></li>
+                            <li><a href="#">ISMT College Butwal</a></li>
+                            <li><a href="#">ISMT College Chitwan</a></li>
+                            <li><a href="#">ISMT College Pokhara</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ISMT College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for anchor links
+            const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        const headerElement = document.querySelector('.header');
+                        const headerHeight = headerElement.offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add scroll effect to header
+            const header = document.querySelector('.header');
+            let lastScrollTop = 0;
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scrolling down
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up
+                    header.style.transform = 'translateY(0)';
+                }
+
+                lastScrollTop = scrollTop;
+            });
+
+            // Add transition to header
+            header.style.transition = 'transform 0.3s ease-in-out';
+
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            const animateElements = document.querySelectorAll('.programme-card, .campus-card, .feature-item, .event-item');
+            animateElements.forEach(function(el) {
+                el.classList.add('animate-on-scroll');
+                observer.observe(el);
+            });
+
+            // Button click animations
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    button.style.transform = 'scale(0.95)';
+                    setTimeout(function() {
+                        button.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
+
+            // Add ripple effect to buttons
+            buttons.forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = button.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.classList.add('ripple');
+
+                    button.appendChild(ripple);
+
+                    setTimeout(function() {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Form validation for apply buttons
+            const applyButtons = document.querySelectorAll('.apply-btn, .cta-button');
+            applyButtons.forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Simple alert for demo purposes
+                    const confirmation = confirm('Would you like to proceed with the application process?');
+                    if (confirmation) {
+                        alert('Thank you for your interest! You will be redirected to the application form.');
+                        // Here you would typically redirect to an actual application form
+                        // window.location.href = '/apply';
+                    }
+                });
+            });
+
+            // Campus view functionality
+            const campusButtons = document.querySelectorAll('.campus-btn');
+            campusButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const campusCard = button.closest('.campus-card');
+                    const campusName = campusCard.querySelector('h3').textContent;
+                    alert('Virtual tour of ' + campusName + ' coming soon!');
+                });
+            });
+
+            // Add loading animation for images
+            const images = document.querySelectorAll('img');
+            images.forEach(function(img) {
+                img.addEventListener('load', function() {
+                    img.style.opacity = '1';
+                });
+
+                // Set initial opacity for fade-in effect
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s ease-in-out';
+            });
+
+            // Parallax effect for hero section
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                window.addEventListener('scroll', function() {
+                    const scrolled = window.pageYOffset;
+                    const parallax = scrolled * 0.5;
+
+                    hero.style.transform = 'translateY(' + parallax + 'px)';
+                });
+            }
+
+            // Search functionality
+            const searchBtn = document.querySelector('.search-btn');
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function() {
+                    const searchTerm = prompt('What would you like to search for?');
+                    if (searchTerm) {
+                        alert('Searching for: ' + searchTerm);
+                        // Here you would implement actual search functionality
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
